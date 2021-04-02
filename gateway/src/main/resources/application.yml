@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: Gateway
+
+  cloud:
+    gateway:
+      enabled: true          # 是否开启网关服务
+      globalcors:
+        corsConfigurations:      # 跨域
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        - id: user-service1     # 路由ID，唯一
+          uri: http://localhost:8081/  # 目标地址
+          predicates:                 # 断言，路由匹配条件
+            - Path=/user/**            #
+          filters:
+            - Test=2
+
