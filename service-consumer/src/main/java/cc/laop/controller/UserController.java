@@ -17,9 +17,15 @@ import javax.servlet.http.HttpServletRequest;
 @ResponseBody
 public class UserController {
 
+    private final HttpServletRequest req;
+
+    public UserController(HttpServletRequest req) {
+        this.req = req;
+    }
+
     @GetMapping("user/{id}")
-    public UserVO info(@PathVariable("id") Integer id, HttpServletRequest request) {
-        System.out.println(request.getHeader("X-Forwarded-For"));
+    public UserVO info(@PathVariable("id") Integer id) {
+        System.out.println(req.getRequestURI());
         return new UserVO(id, "user");
     }
 

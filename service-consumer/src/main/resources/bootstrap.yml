@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.1.30:8848
+        file-extension: yml
+        namespace: e6e2cfdd-ec0f-42a4-99b7-4037fc63950f
+        extension-configs:
+          - dataId: vanilla-config.properties
+            group: vanilla
